@@ -13,10 +13,12 @@ def fib(n)
   curr = 0
   succ = 1
   total = 0
+
   while curr < n do
     curr, succ = succ, curr + succ
     total += curr if curr.even?
   end
+
   puts total
 end
 
