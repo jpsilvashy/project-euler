@@ -9,30 +9,30 @@ require "benchmark"
 
 val = ARGV[0].to_i
 
-def factors_of(int)
-  factors = []
-
-  (1..int).each do |x|
-    if (int % x) == 0
-      factors << x
-    end
+def is_prime?(n)
+  for d in 2..(Math.sqrt(n))
+   if (n % d) == 0
+    return false
   end
+end
 
-  factors
+true
 end
 
 time = Benchmark.measure do
-
-  factors_of(val).each do |f|
-    if f %
-
+  count = val
+  val.times do
+    if count.even?
+      count -= 1
+    else
+      if is_prime?(count) == true
+        puts "\n#{count} is prime!"
+        break
+      end
+      print '.'
+      count -= 2
     end
   end
-
 end
 
 puts time
-
-# if factors_of(val).length == 2
-#   puts "is prime"
-# end
