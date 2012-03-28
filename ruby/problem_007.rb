@@ -31,15 +31,15 @@ time = Benchmark.measure do
   primes_found = 0
 
   until primes_found == 10_001 do
-    if int.is_prime?
-      puts "#{int} is the #{primes_found} prime."
+    if int.is_prime? && int != 2
+      puts int
       primes_found += 1
     end
     int += 1
   end
 
-  puts int
-
+  puts
+  puts "#{int-1} is the #{primes_found} prime."
 end
 
 puts time
