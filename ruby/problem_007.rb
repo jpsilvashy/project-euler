@@ -15,6 +15,12 @@ class Integer
 
   # is the integer a prime number?
   def is_prime?
+
+    # fail fast if even.
+    if self.even?
+      return false
+    end
+
     for d in 2..(Math.sqrt(self))
       if (self % d) == 0
         return false
@@ -31,8 +37,7 @@ time = Benchmark.measure do
   primes_found = 0
 
   until primes_found == 10_001 do
-    if int.is_prime? && int != 2
-      puts int
+    if int.is_prime?
       primes_found += 1
     end
     int += 1
