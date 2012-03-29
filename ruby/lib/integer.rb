@@ -1,5 +1,4 @@
-module MyMathLib
-
+# add some methods to Integer
 class Integer
 
   # is the integer a prime number?
@@ -18,5 +17,4 @@ class Integer
     true
   end
 
-end
 end
