@@ -9,8 +9,24 @@
 require "benchmark"
 require_relative "lib/integer"
 
+def array_of_primes_for(val)
+  sieve = []
+  for i in 2 .. val
+    sieve[i] = i
+  end
+  for i in 2 .. Math.sqrt(val)
+    next unless sieve[i]
+    (i*i).step(val, i) do |j|
+      sieve[j] = nil
+    end
+  end
+  sieve.compact
+end
+
 time = Benchmark.measure do
-  2_000.sieve
+  primes = array_of_primes_for(2_000_000)
+  sum_of_primes = primes.inject {|sum, n| sum + n }
+  puts sum_of_primes
 end
 
 puts time
