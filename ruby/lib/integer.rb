@@ -17,4 +17,32 @@ class Integer
     true
   end
 
+  def sum_of_primes
+    total = 0
+    sieve = []
+
+    for i in 2 .. self
+      sieve[i] = i
+    end
+
+    for i in 2 .. Math.sqrt(self)
+      if sieve[i]
+        total += sieve[i]
+      end
+
+      next unless sieve[i]
+      (i*i).step(self, i) do |j|
+
+        if sieve[j]
+          total += sieve[j]
+        end
+
+        sieve[j] = nil
+      end
+    end
+    sieve.compact
+
+    puts total
+  end
+
 end
